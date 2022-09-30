@@ -1,0 +1,97 @@
+[
+  {
+    "_id": "63366d4fd2a4e892ff4d4dc0",
+    "nome": "Joao",
+    "idade": 10,
+    "quantidade": 1,
+    "plano": {
+      "_id": "63352aab5218711bd3562975",
+      "registro": "reg1",
+      "nome": "Bitix Customer Plano 1",
+      "code": [
+        {
+          "_id": "633527de8b3be57f10c779cd",
+          "faixa1": 10,
+          "faixa2": 12,
+          "faixa3": 15
+        }
+      ]
+    }
+  },
+  {
+    "_id": "63366d6bd2a4e892ff4d4dc2",
+    "nome": "Carla",
+    "idade": 40,
+    "quantidade": 1,
+    "plano": {
+      "_id": "63352aab5218711bd356297b",
+      "registro": "reg6",
+      "nome": "Bitix Customer Plano 6",
+      "code": [
+        {
+          "_id": "6335282f8b3be57f10c779db",
+          "faixa1": 60,
+          "faixa2": 70,
+          "faixa3": 80
+        }
+      ]
+    }
+  },
+  {
+    "_id": "63366f0ed2a4e892ff4d4dc9",
+    "nome": "Antero",
+    "idade": 80,
+    "quantidade": 4,
+    "plano": {
+      "_id": "63352aab5218711bd3562976",
+      "registro": "reg1",
+      "nome": "Bitix Customer Plano 1 - Premium",
+      "code": [
+        {
+          "_id": "633527ec8b3be57f10c779cf",
+          "faixa1": 9,
+          "faixa2": 11,
+          "faixa3": 14
+        }
+      ]
+    }
+  },
+  {
+    "_id": "6336d566d8a1f7e9e450c686",
+    "nome": "Victor",
+    "idade": 19,
+    "quantidade": 5,
+    "plano": {
+      "_id": "63352aab5218711bd3562979",
+      "registro": "reg4",
+      "nome": "Bitix Customer Plano 4",
+      "code": [
+        {
+          "_id": "6335281d8b3be57f10c779d7",
+          "faixa1": 40,
+          "faixa2": 50,
+          "faixa3": 60
+        }
+      ]
+    }
+  },
+  {
+    "_id": "63372fefd8a1f7e9e450c8f6",
+    "nome": "Gustavo",
+    "idade": 26,
+    "quantidade": 1,
+    "plano": {
+      "_id": "63352aab5218711bd356297b",
+      "registro": "reg6",
+      "nome": "Bitix Customer Plano 6",
+      "code": [
+        {
+          "_id": "6335282f8b3be57f10c779db",
+          "faixa1": 60,
+          "faixa2": 70,
+          "faixa3": 80
+        }
+      ]
+    }
+  }
+]

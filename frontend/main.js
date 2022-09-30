@@ -1,6 +1,7 @@
 const postsList = document.querySelector('.posts-list');
 const planosList = document.querySelector('.planos-list');   
 const addBeneficiarioForm = document.querySelector('.add-post-form');
+const baixardados = document.querySelector('.baixar');
 const nomevalue = document.getElementById('nome-value');
 const idadevalue = document.getElementById('idade-value');
 const quantidadevalue = document.getElementById('quantidade-value');
@@ -74,11 +75,15 @@ const renderPlanos = (planos) =>{
 
 const url = 'http://127.0.0.1:8080/beneficiarios'
 //Get - read beneficiarios
+let beneficiarios = []
 
 fetch(url)
     .then(res => res.json())
     .then(data =>
-        renderBeneficiarios(data)
+       {renderBeneficiarios(data)
+        beneficiarios=data
+    }
+
 )
 fetch(planos)
     .then(res => res.json())
@@ -126,15 +131,19 @@ addBeneficiarioForm.addEventListener('submit', (e)=>{
 
 })
 //baixar dados em json
+function download(content, fileName, contentType) {
+    const a = document.createElement("a");
+    const file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
+
+function baixarda(beneficiarios) {
+    download(JSON.stringify(beneficiarios,null,2), "proposta.json", "text/plain"); 
+}
+baixardados.addEventListener('click',(e) => {
+    baixarda(beneficiarios)
+});
 
 
-// baixardados.addEventListener('submit',(e)   => {
-//     e.preventDefault();
-//     fetch(url)
-//     .then(res => res.json())
-//     .then(data =>
-//        console.log(JSON.stringify())
-//     )
-   
-
-// })

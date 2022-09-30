@@ -4,6 +4,7 @@ const addBeneficiarioForm = document.querySelector('.add-post-form');
 const nomevalue = document.getElementById('nome-value');
 const idadevalue = document.getElementById('idade-value');
 const quantidadevalue = document.getElementById('quantidade-value');
+
 const planos = 'http://127.0.0.1:8080/planos'
 let all_planos = null
 
@@ -124,3 +125,16 @@ addBeneficiarioForm.addEventListener('submit', (e)=>{
     }
 
 })
+//baixar dados em json
+
+
+// baixardados.addEventListener('submit',(e)   => {
+//     e.preventDefault();
+//     fetch(url)
+//     .then(res => res.json())
+//     .then(data =>
+//        console.log(JSON.stringify())
+//     )
+   
+
+// })

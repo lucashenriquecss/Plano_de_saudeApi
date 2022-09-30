@@ -4,8 +4,8 @@ const addBeneficiarioForm = document.querySelector('.add-post-form');
 const nomevalue = document.getElementById('nome-value');
 const idadevalue = document.getElementById('idade-value');
 const quantidadevalue = document.getElementById('quantidade-value');
-
-
+const planos = 'http://127.0.0.1:8080/planos'
+let all_planos = null
 
 
 let output ='';
@@ -72,7 +72,6 @@ const renderPlanos = (planos) =>{
 }
 
 const url = 'http://127.0.0.1:8080/beneficiarios'
-const planos = 'http://127.0.0.1:8080/planos'
 //Get - read beneficiarios
 
 fetch(url)
@@ -82,8 +81,10 @@ fetch(url)
 )
 fetch(planos)
     .then(res => res.json())
-    .then(data =>
-    let plano_index = data.findIndex
+    .then((data) => {
+        renderPlanos(data)
+        all_planos = data
+    }
         
 )
 
@@ -96,23 +97,30 @@ fetch(planos)
 
 addBeneficiarioForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-    
-    fetch(url, {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            nome:nomevalue.value,
-            idade:idadevalue.value,
-            quantidade:quantidadevalue.value
+    const plano_index = all_planos.findIndex(i => i.nome === planosList.value )
+    if (plano_index >= 0 ) {
+
+        fetch(url, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome:nomevalue.value,
+                idade:idadevalue.value,
+                quantidade:quantidadevalue.value,
+                plano:all_planos[plano_index]
+                
+            })
         })
-    })
-    .then(res => res.json())
-    .then(data => {
-        const dataArr = [];
-        dataArr.push(data);
-        console.log(dataArr);
-        renderBeneficiarios(dataArr);
-    });
+        
+        .then(res => res.json())
+        .then(data => {
+            const dataArr = [];
+            dataArr.push(data);
+            console.log(dataArr);
+            renderBeneficiarios(dataArr);
+        });
+    }
+
 })

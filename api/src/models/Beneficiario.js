@@ -6,7 +6,7 @@ const autorSchema = new mongoose.Schema(
         nome: {type :String, required:true, min:[4,'Por favor digite mais de 3 letras']},
         idade: {type:Number, required:true},
         quantidade: {type:Number, required:true},
-        plano:{type:mongoose.Schema.Types.ObjectId, ref:'plano',required:true},
+        plano:{type:Object, ref:'plano',required:true},
         total:{type:Number}
     },
     { //versionando modelos para caso inclua novo atributo ou campo para ser requerido

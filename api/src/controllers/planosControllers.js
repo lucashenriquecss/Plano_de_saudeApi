@@ -4,15 +4,17 @@ class PlanoController {
 
     static listarPlanos = (req,res) => {
         planos.find()
-            .populate('preco')
-            .exec((err, planos) =>{
+            .populate('code')
+            .exec((err, planos) =>{           
             res.status(200).json(planos)
         })
        
     }
     static listarPlanoId = (req, res) => {
         const id = req.params.id;
-        planos.findById(id,(err, planos) =>{
+        planos.findById(id)
+            .populate('code')         
+            .exec((err, planos) =>{
             if (err) {
                 res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
             } else {

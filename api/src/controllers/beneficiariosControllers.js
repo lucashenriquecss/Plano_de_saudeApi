@@ -6,70 +6,25 @@ import precos from "../models/Preco.js";
 class BeneficiariosController {
 
     static listarBeneficiarios = (req,res) => {
+        
+                
         beneficiarios.find()
-            .populate('plano')
-            .exec((err, beneficiarios) =>{
-            res.status(200).json(beneficiarios)
-        })
-    }
-    static listarValorBeneficiarioId = (req, res) => {
-        const id = req.params.id;       
-        const idade = req.body.idade;
-
-        if (idade <= 17) {       
-            beneficiarios.findById(id)
             .populate({
                 path:"plano",
                 populate:{
                     path:"code",
-                    select:{faixa1 :1}
+                    select:{faixa1 :1,faixa2 :2,faixa3 :3}               
                 }
             })
-            
-                .exec((err, beneficiarios) =>{
-                if (err) {
-                    res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
-                } else {
-                    res.status(200).json(beneficiarios)
-                }
-            })
-        } else if (idade >= 18 && idade <=40 ) {
-            beneficiarios.updateOne(id,{$mul})
-                .populate({
-                    path:"plano",
-                    populate:{
-                        path:"code",
-                        select:{faixa2 :1}
-                    }
-                })
-                .exec((err, beneficiarios) =>{
-                if (err) {
-                    res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
-                } else {
-                    res.status(200).json(beneficiarios)
-                }
-            })
-        }else{
-            beneficiarios.findById(id)
-                .populate({
-                    path:"plano",
-                    populate:{
-                        path:"code",
-                        select:{faixa3 :1}
-                    }
-                })
-                .exec((err, beneficiarios) =>{
-                if (err) {
-                    res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
-                } else {
-                    res.status(200).json(beneficiarios)
-                }
-            })
-        }  
+            .exec((err, beneficiarios) =>{  
+            res.status(200).json(beneficiarios)
+        })
     }
+  
     static listarBeneficiarioId = (req, res) => {
         const id = req.params.id;
-        const idade = req.body.idade;
+        const idade = req.body.idade;  
+        
         if (idade <= 17) {       
             beneficiarios.findById(id)
                 .populate({
@@ -83,11 +38,13 @@ class BeneficiariosController {
                 if (err) {
                     res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
                 } else {
-                    res.status(200).json(beneficiarios)
+                    const total = beneficiarios.plano.code.map(item => item.faixa1).reduce((current, accumulator) => current + accumulator) * beneficiarios.quantidade
+                    const objeto = {beneficiarios,total}
+                    res.status(200).json(objeto)
                 }
             })
         } else if (idade >= 18 && idade <=40 ) {
-            beneficiarios.findById(id)
+             beneficiarios.findById(id)
                 .populate({
                     path:"plano",
                     populate:{
@@ -99,7 +56,10 @@ class BeneficiariosController {
                 if (err) {
                     res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
                 } else {
-                    res.status(200).json(beneficiarios)
+                    const total = beneficiarios.plano.code.map(item => item.faixa2).reduce((current, accumulator) => current + accumulator) * beneficiarios.quantidade
+                    const objeto = {beneficiarios,total}
+                    
+                    res.status(200).json(objeto)
                 }
             })
         }else{
@@ -115,7 +75,9 @@ class BeneficiariosController {
                 if (err) {
                     res.status(400).send({message: `${err.message}  - Falha ao encontrar `})
                 } else {
-                    res.status(200).json(beneficiarios)
+                    const total = beneficiarios.plano.code.map(item => item.faixa3).reduce((current, accumulator) => current + accumulator) * beneficiarios.quantidade
+                    const objeto = {beneficiarios,total}
+                    res.status(200).json(objeto)
                 }
             })
         }  

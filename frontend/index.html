@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h3>Add novo beneficiario</h3>
+                <form class="add-post-form" method="post">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome-value">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="idade">Idade</label>
+                        <input type="number" class="form-control" id="idade-value">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="quantidade">quantidade</label>
+                        <input type="number" class="form-control" id="quantidade-value">
+                    </div>
+                    <br>
+                    <select class=" planos-list form-select" aria-label="Default select example">
+                        <option selected>planos</option>  
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary"> Add beneficiario</button>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <div class="posts-list row">       
+        </div>
+    </div>
+    
+
+
+    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>
